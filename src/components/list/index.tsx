@@ -1,34 +1,33 @@
 
 type Props = {
   names: Array<string>;
-  notaJoel: Array<string>;
-  notaLuana: Array<string>;
+  firstNote: Array<string>;
+  secondNote: Array<string>;
 }
-const List: React.FC<Props> = ({ names, notaJoel, notaLuana }) => {
+const List: React.FC<Props> = ({ names, firstNote, secondNote }) => {
+  const headList = ["Posição", "Produto", "Nota-1", "Nota-2", "Prioridade"]
   return (
     <>
     <table
     id="brasileirao"
     border={1}
     >
-    <thead>
+      <thead >
         <tr>
-      <td> Posição </td>
-      <td > Produto </td>
-      <td> Joel </td>
-      <td> Luana </td>
-      <td> Prioridade </td>
-
-        </tr>
+      { headList.map((item, index) => (
+      <td key={index}> {item}</td>
+        ))
+      }
+      </tr>
       </thead>
     { names.map((e, index) => (
       <thead key={index}>
         <tr>
       <td> {index + 1}</td>
       <td >{e}</td>
-      <td> {notaJoel[index]}</td>
-      <td> {notaLuana[index]}</td>
-      <td> {(Number(notaLuana[index]) + Number(notaJoel[index]))/2}</td>
+      <td> {firstNote[index]}</td>
+      <td> {secondNote[index]}</td>
+      <td> {(Number(secondNote[index]) + Number(firstNote[index]))/2}</td>
 
         </tr>
       </thead>

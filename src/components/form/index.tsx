@@ -2,25 +2,25 @@ import { useState } from "react"
 
 type Props = {
   listName: (a: string[]) => void;
-  listNotaJoel: (a: string[]) => void;
-  listNotaLuana: (a: string[]) => void;
+  addFirstNote: (a: string[]) => void;
+  addSecondNote: (a: string[]) => void;
   arrayName: Array<string>;
-  arrayNotaJoel: Array<string>;
-  arrayNotaLuana: Array<string>;
+  listFirstNote: Array<string>;
+  listSecondNote: Array<string>;
 }
-const Form: React.FC<Props> = ({ listName, listNotaJoel, listNotaLuana, arrayNotaJoel, arrayNotaLuana, arrayName }) => {
+const Form: React.FC<Props> = ({ listName, addFirstNote, addSecondNote, listFirstNote, listSecondNote, arrayName }) => {
 const [nameList, setNameList] = useState('')
-const [notaJoel, setNotaJoel] = useState('')
-const [notaLuana, setNotaLuana] = useState('')
+const [firstNote, setFirstNote] = useState('')
+const [secondNote, setSecondNote] = useState('')
 
 const handleSubmit = (event: React.FormEvent) => {
   event.preventDefault();
   listName([...arrayName, nameList])
-  listNotaJoel([...arrayNotaJoel, notaJoel])
-  listNotaLuana([...arrayNotaLuana, notaLuana])
+  addFirstNote([...listFirstNote, firstNote])
+  addSecondNote([...listSecondNote, secondNote])
   setNameList('')
-  setNotaJoel('')
-  setNotaLuana('')
+  setFirstNote('')
+  setSecondNote('')
 };
   return (
     <>
@@ -38,25 +38,25 @@ const handleSubmit = (event: React.FormEvent) => {
         />
         </label>
         <label htmlFor="nota-j">
-          Joel
+          Nota-1
         <input
           type="number"
           id="nota-j"
           name="nota"
-          value={notaJoel}
+          value={firstNote}
           placeholder="Insira sua nota aqui"
-          onChange={ (e) => setNotaJoel(e.target.value)}
+          onChange={ (e) => setFirstNote(e.target.value)}
         />
         </label>
         <label htmlFor="nota-l">
-        Luana
+        Nota-2
         <input
           type="number"
           id="nota-l"
           name="nota"
-          value={notaLuana}
+          value={secondNote}
           placeholder="Insira sua nota aqui"
-          onChange={ (e) => setNotaLuana(e.target.value)}
+          onChange={ (e) => setSecondNote(e.target.value)}
         />
         </label>
         <button
